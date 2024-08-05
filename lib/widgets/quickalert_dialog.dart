@@ -155,11 +155,11 @@ class QuickAlert {
     );
 
     if (options.type != QuickAlertType.loading) {
-      child = RawKeyboardListener(
+      child = KeyboardListener(
         focusNode: FocusNode(),
         autofocus: true,
-        onKey: (event) {
-          if (event is RawKeyUpEvent &&
+        onKeyEvent: (event) {
+          if (event is KeyUpEvent &&
               event.logicalKey == LogicalKeyboardKey.enter) {
             options.timer?.cancel();
             options.onConfirmBtnTap != null

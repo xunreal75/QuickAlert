@@ -46,9 +46,12 @@ class QuickAlertContainer extends StatelessWidget {
       ),
       clipBehavior: Clip.antiAlias,
       width: options.width ?? MediaQuery.of(context).size.shortestSide,
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [header, content],
+      child: SingleChildScrollView(
+        scrollDirection: Axis.vertical,
+        child: Column(
+          mainAxisSize: MainAxisSize.max,
+          children: [header, content],
+        ),
       ),
     );
   }
@@ -84,7 +87,7 @@ class QuickAlertContainer extends StatelessWidget {
     }
     return Container(
       width: double.infinity,
-      height: 150,
+      height: options.headerHeight ?? 150,
       clipBehavior: Clip.antiAlias,
       decoration: BoxDecoration(
         color: options.headerBackgroundColor,
