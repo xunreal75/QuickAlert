@@ -130,18 +130,17 @@ class QuickAlert {
       width: width,
     );
 
-    Widget child = WillPopScope(
-      onWillPop: () async {
+    Widget child = PopScope(
+      canPop: !disableBackBtn,
+      onPopInvoked: (didPop)  async {
         options.timer?.cancel();
         if (options.type == QuickAlertType.loading &&
             !disableBackBtn &&
             showCancelBtn) {
           if (options.onCancelBtnTap != null) {
             options.onCancelBtnTap!();
-            return false;
           }
         }
-        return !disableBackBtn;
       },
       child: AlertDialog(
         contentPadding: EdgeInsets.zero,
